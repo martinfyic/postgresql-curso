@@ -10,42 +10,72 @@ Para correr la imagen:
 docker compose up -d
 ```
 
-## Ejemplo querys
+## Querys
 
-```sql
-create table users (name VARCHAR(10) UNIQUE);
+- [**Comandos basicos**](./querys/comandos-basicos.md)
+- [**SUBSTRING & POSITION**](./querys/substring-y-position.md)
+- [**BETWEEN**](./querys/operador-between.md)
+- [**COUNT, MAX, MIN, AVG, ROUND**](./querys/max-min-count-rounded-avg.md)
+- [**GROUP BY**](./querys/group-by.md)
+- [**HAVING**](./querys/having.md)
 
--- insertar de a uno
-INSERT INTO users (name) values ('Bruce');
+## Terminologia
 
--- insertar multipes
-INSERT INTO users (name) values ('Robnaldo'), ('Figo'), ('Loki');
+- **`DDL`**: Data Definition Language
 
--- actualizar
-UPDATE users SET name='Ronaldo' WHERE name='Robnaldo';
+  Create, Alter, Drop, Truncate.
 
--- seleccionar
-SELECT * FROM users;
+- **`DML`**: Data Manipulation Language
 
--- seleccionar con **limite**
-SELECT * FROM users LIMIT 3;
+  Insert, Delete, Update.
 
--- seleccionar con paginacion ejemplo
-SELECT * FROM users LIMIT 3 OFFSET 3;
+- **`TCL`**: Transaction Control Language
 
--- clausula WHERE
-SELECT * FROM users WHERE name='Bruce';
-SELECT * FROM users WHERE name LIKE 'J%'; --nombre que empiece con J
-SELECT * FROM users WHERE name LIKE '%a%'; --nombre que contengan a
+  Commit, Rollback.
 
--- eliminar registros
-DELETE FROM users WHERE name='Martin'; --elimino un registro
-DELETE FROM users WHERE name LIKE '%a%'; -- elimino los registros que contengan a
-DELETE FROM users; -- CUIDADO elimina todos los registros
+- **`DQL`**: Data Query Language
 
--- eliminar tabla
-DROP TABLE users;
+  Select.
 
--- borrar datos de una tabla
-TRUNCATE TABLE users; -- elimina los datos pero la tabla se mantiene
-```
+## Agregate functions
+
+- Count
+- Sum
+- Max
+- Min
+- Group By
+- Having
+- Order By
+
+## Filtrando Data
+
+- Like
+- In
+- Is Null
+- Is Not Null
+- Where
+- And
+- Or
+- Between
+
+## Constrains
+
+La cláusula `CONSTRAINT` se usa en las instrucciones `ALTER TABLE` y `CREATE TABLE` para crear o eliminar restricciones. Hay dos tipos de cláusulas `CONSTRAINT`: uno para crear una restricción en un único campo y otro para crear una restricción en varios campos.
+
+### Primary Key
+
+La restricción PRIMARY KEY en SQL identifica de forma única cada registro en una tabla. Las claves primarias deben contener valores únicos y no pueden contener valores NULL . Una tabla solo puede tener una clave principal, que puede consistir en campos simples o múltiples.
+
+Ejemplo en codigo [Primary Key](./doc/primary-key.md)
+
+### Check
+
+La restricción `CHECK` en SQL se usa para limitar el rango de valores que se puede colocar en una columna, por ejemplo, Si define una restricción `CHECK` en una sola columna, solo se permiten ciertos valores para esta columna. De esta manera se pueden evitar errores al no introducir valores erróneos.
+
+Ejemplo en codigo [Check](./doc/check.md)
+
+### Index - Indices
+
+Un índice es una estructura de disco asociada con una tabla o una vista que acelera la recuperación de filas de la tabla o de la vista. Un índice contiene claves generadas a partir de una o varias columnas de la tabla o la vista. Dichas claves están almacenadas en una estructura (árbol b) que permite que SQL Server busque de forma rápida y eficiente la fila o filas asociadas a los valores de cada clave.
+
+Ejemplo en codigo [Index](./doc/index-indices.md)
