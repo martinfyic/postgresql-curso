@@ -79,3 +79,22 @@ Ejemplo en codigo [Check](./doc/check.md)
 Un índice es una estructura de disco asociada con una tabla o una vista que acelera la recuperación de filas de la tabla o de la vista. Un índice contiene claves generadas a partir de una o varias columnas de la tabla o la vista. Dichas claves están almacenadas en una estructura (árbol b) que permite que SQL Server busque de forma rápida y eficiente la fila o filas asociadas a los valores de cada clave.
 
 Ejemplo en codigo [Index](./doc/index-indices.md)
+
+### Foreign Kys
+
+La clave foránea identifica una columna o grupo de columnas en una tabla (tabla hija o referendo) que se refiere a una columna o grupo de columnas en otra tabla (tabla maestra o referenciada). Las columnas en la tabla referendo deben ser la clave primaria u otra clave candidata en la tabla referenciada.
+
+Ejemplo:
+
+```sql
+alter table city
+	add constraint fk_country_code
+	foreign key ( countrycode )
+	references country( code );
+```
+
+### Eliminacion en cascada
+
+Cuando creamos una clave foránea utilizando esta opción, elimina las filas de referencia en la tabla secundaria cuando la fila referenciada se elimina en la tabla primaria que tiene una clave primaria.
+
+Es decir que si eliminamos un dato que tenga relaciones con otras tablas, elimina ese dato mas todos los demas datos relacionados en las demas tablas.
