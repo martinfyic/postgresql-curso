@@ -18,6 +18,8 @@ docker compose up -d
 - [**COUNT, MAX, MIN, AVG, ROUND**](./querys/max-min-count-rounded-avg.md)
 - [**GROUP BY**](./querys/group-by.md)
 - [**HAVING**](./querys/having.md)
+- [**INNER JOIN**](./doc/joins/inner-join.md)
+- [**UNION**]()
 
 ## Terminologia
 
@@ -98,3 +100,11 @@ alter table city
 Cuando creamos una clave foránea utilizando esta opción, elimina las filas de referencia en la tabla secundaria cuando la fila referenciada se elimina en la tabla primaria que tiene una clave primaria.
 
 Es decir que si eliminamos un dato que tenga relaciones con otras tablas, elimina ese dato mas todos los demas datos relacionados en las demas tablas.
+
+## JOINS
+
+Un join es una operación que combina dos filas juntas en una fila. Estas filas usualmente pertenecen a dos tablas diferentes —pero no necesariamente tiene que ser así.
+
+### INNER JOIN
+
+Devuelve solo filas que coinciden en ambas tablas. Lo que significa que si tiene un producto sin ID de categoría, o con un ID de categoría que no está presente en la tabla Categorías, ese registro no se devolverá en el resultado.
